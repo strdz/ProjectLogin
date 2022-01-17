@@ -1,0 +1,163 @@
+﻿@{
+    ViewData["Title"] = "Acesso Cliente - Estamparia Salete";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Login 10</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="~/js/OwlCarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/js/OwlCarousel/owl.theme.default.min.css">
+</head>
+<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+    <section class="ftco-section">
+        <div class="contorno">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Acesso Cliente</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-12">
+                    <div class="wrap d-md-flex">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="texto-banner-largura">
+                                            <div class="titulo-texto-banner banner-convencional">
+                                                <span class="titulo-texto-banner-primario">A Empresa</span>
+                                                <span class="titulo-margem">Salete</span>
+                                                <p>A Estamparia Salete é sinônimo de qualidade desde 1959 e atende os principais nomes do mercado nacional e internacional. Uma empresa pertencente ao Grupo Rosset, considerado o maior conglomerado têxtil da América Latina.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="texto-banner-largura">
+                                            <div class="titulo-texto-banner banner-convencional">
+                                                <span class="titulo-texto-banner-primario">Estamparia </span>
+                                                <span class="titulo-margem">Convencional</span>
+                                                <p>A Estamparia Salete está equipada com máquinas de estampar a quadro e rotativas (cilindros até 10 cores) de alta fidelidade para a reprodução, encaixe e impressão.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="texto-banner-largura">
+                                            <div class="titulo-texto-banner banner-convencional">
+                                                <span class="titulo-texto-banner-primario">Estamparia </span>
+                                                <span class="titulo-margem">Digital</span>
+                                                <p>A estampa digital, também conhecida como Inkjet, é capaz de transferir imagens do computador diretamente para o tecido de trabalho, permitindo mais liberdade criativa durante a concepção da estampa.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="login-wrap p-4 p-md-5" style="width: 3000px;max-width: 10000px;">
+                            <div class="d-flex">
+                                <div class="w-100">
+                                    <h3 class="mb-4">Login</h3>
+                                </div>
+                            </div>
+                            <form class="signin-form">
+                                <div class="form-group mb-3">
+                                    <label class="label" for="name">Usuário</label>
+                                    <input type="text" id="loginUsuario" class="form-control" placeholder="salete" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="label" for="password">Senha</label>
+                                    <input type="password" id="senhaUsuario" class="form-control" placeholder="1234" required>
+                                </div>
+                                <span style="display:inline-block; font-size: 20px; margin: 20px 0; padding:20px; border: 0px solid #D3D3D3"> @ViewData["Retorno"]</span>
+                                <div class="form-group">
+                                    <button type="button" onclick="Logar();" class="form-control btn btn-primary rounded submit px-3">Entrar</button>
+                                </div>
+                                <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LekPBseAAAAAJ9T7tBEKStDFnJjt6WYDztIejxa"></div>
+                                </div>
+                                <div class="form-group d-md-flex">
+                                    <div class="w-50 text-left">
+                                        <label class="checkbox-wrap checkbox-primary mb-0">
+                                            Lembrar-me
+                                            <input type="checkbox" checked>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="w-50 text-md-right">
+                                        <a href="#">Esqueci a Senha</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <p class="text-center">Não tem uma conta? <a data-toggle="tab" href="#signup">Registre-se agora!</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="~/js/Login/login.js"></script>
+    <script src="~/js/OwlCarousel/owl.carousel.min.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    //$('.owl-carousel').owlCarousel({
+    //    loop: true,
+    //    nav: false,
+    //    dots: true,
+    //    autoplay: true, 
+    //    autoplayTimeout: 4000,
+    //    singleItem: true,
+    //    items: 1,
+    //    margin: 10
+    //});
+
+    $('.carousel').carousel({
+        interval: 3000
+    })
+
+    var contadorImagem = 0;
+    var imagemAtual = 0;
+    var imagem = [];
+
+    imagem[0] = 'images/bg.jpg';
+    imagem[1] = 'images/bg-2.jpg';
+
+    carregarImagens = [];
+
+    for (var i = 0; i < imagem.length; i++) {
+        if (imagem[i] == "")
+            break;
+
+        carregarImagens[i] = new Image();
+        carregarImagens[i].src = imagem[i];
+        contadorImagem++;
+    }
+
+    function startSlideShow() {
+        if (document.body && contadorImagem > 0) {
+            document.body.style.backgroundImage = "url(" + imagem[imagemAtual] + ")";
+            document.body.style.backgroundAttachment = "fixed";
+            document.body.style.backgroundRepeat = "repeat";
+            document.body.style.backgroundPosition = "left top";
+
+            imagemAtual = imagemAtual + 1;
+            if (imagemAtual > (contadorImagem - 1)) {
+                imagemAtual = 0;
+            }
+            setTimeout('startSlideShow()', 5000);
+        }
+    }
+    startSlideShow();
+</script>
+
