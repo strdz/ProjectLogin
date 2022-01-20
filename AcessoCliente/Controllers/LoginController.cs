@@ -149,7 +149,7 @@ namespace AcessoCliente.Controllers
 
         public async Task<bool> ValidaCaptcha(UsuarioModel loginDetails)
         {
-                string secretKey = "6LekPBseAAAAAFvBWa1rYDWXvnEiaY4YgsKUUjmb";
+                string secretKey = "";
                 var cliente = new WebClient();
                 var resultado = cliente.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, loginDetails.ValidaCaptcha));
                 var obj = JObject.Parse(resultado);
