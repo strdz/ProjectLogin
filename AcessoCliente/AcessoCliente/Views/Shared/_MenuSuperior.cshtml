@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Portal de acesso destinado aos clientes da Estamparia Salete Ltda. ">
+    <meta name="author" content="Estamparia Salete Ltda.">
+    <meta http-equiv="content-language" content="pt-br" />
+
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link href="~/css/Base/cores.css" rel="stylesheet" />
+    <link href="~/css/Base/style.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/css/Ferramentas/ModalDinamico/ModalDinamico.css" rel="stylesheet" />
+  
+</head>
+<body>
+
+    <nav class="menu_navegacao">
+        <div class="sirs_info">
+            <div>
+                <img src="~/images/logo_sirs.png" class="img_logo" alt="Logo Salete" />
+            </div>
+            <div class="nome_sistema">SIRS</div>
+        </div>
+        <div class="page_info">
+            <i class="fa fa-home" title="Menu Principal"></i>
+            <i class="fa fa-book" title="Informações e manuais da Página"></i>
+            <div class="numero_notificacao">
+                <i class="fa fa-bell" title="Minhas Notificações"></i>
+                <div><span class="item_notificacao" id="numeroNotificacao"></span></div>
+            </div>
+            <div class="numero_notificacao">
+                <i class="fa fa-upload" id="iconAtualizacao" title="Atualizacões do sistema"></i>
+                <div><span class="item_notificacao" id="numeroAtualizacao"></span></div>
+            </div>
+            <i class="fa fa-bug" onclick=" window.open('http://' + location.host + '/Sistema/Chamado')" title="Abrir Chamado"></i>
+        </div>
+        <div class="user_info">
+            <i class=" user_icon fa fa-user fa-fw"></i>
+            <span class="ds_User" id="ds_User" for="exemplo">@ViewData["Usuario"]</span>
+            <i class="logoff fa fa-sign-out fa-fw" title="Sair"></i>
+        </div>
+
+    </nav>
+    <div style="margin: 60px 0.5% 0px 0.5%">
+
+        @RenderBody()
+
+
+
+    </div>
+    <partial name="~/Views/Ferramentas/ModalDinamico/ModalDinamico.cshtml">
+</body>
+</html>
+
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/Ferramentas/ModalDinamico/ModalDinamico.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (!sessionStorage.token) {
+            window.location.replace("http://localhost:53287/?mensagem=Usuario%20não%20autenticado%2C%20realize%20o%20Login");
+        } else {
+           // document.getElementById("ds_User").textContent = "Bem vindo:" + sessionStorage.Usuario;
+        }
+    });
+</script>

@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Login\**" />
+    <Content Remove="Views\Login\**" />
+    <EmbeddedResource Remove="Views\Login\**" />
+    <None Remove="Views\Login\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\About.cshtml" />
+    <Content Remove="Views\Home\Contact.cshtml" />
+    <Content Remove="Views\Home\Privacy.cshtml" />
+    <!--<Content Remove="Views\Shared\_Layout1.cshtml" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Ferramentas\ModalDinamico\ModalDinamico.cshtml" />
+    <None Include="wwwroot\js\Ferramentas\ModalDinamico\ModalDinamico.js" />
+    <None Include="wwwroot\js\Ferramentas\TabelaDinamica\TabelaDinamica.js" />
+    <None Include="wwwroot\lib\font-awesome\css\font-awesome.css.map" />
+    <None Include="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\lib\font-awesome\less\animated.less" />
+    <None Include="wwwroot\lib\font-awesome\less\bordered-pulled.less" />
+    <None Include="wwwroot\lib\font-awesome\less\core.less" />
+    <None Include="wwwroot\lib\font-awesome\less\fixed-width.less" />
+    <None Include="wwwroot\lib\font-awesome\less\font-awesome.less" />
+    <None Include="wwwroot\lib\font-awesome\less\icons.less" />
+    <None Include="wwwroot\lib\font-awesome\less\larger.less" />
+    <None Include="wwwroot\lib\font-awesome\less\list.less" />
+    <None Include="wwwroot\lib\font-awesome\less\mixins.less" />
+    <None Include="wwwroot\lib\font-awesome\less\path.less" />
+    <None Include="wwwroot\lib\font-awesome\less\rotated-flipped.less" />
+    <None Include="wwwroot\lib\font-awesome\less\screen-reader.less" />
+    <None Include="wwwroot\lib\font-awesome\less\stacked.less" />
+    <None Include="wwwroot\lib\font-awesome\less\variables.less" />
+    <None Include="wwwroot\lib\font-awesome\scss\font-awesome.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_animated.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_core.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_icons.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_larger.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_list.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_mixins.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_path.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_screen-reader.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_stacked.scss" />
+    <None Include="wwwroot\lib\font-awesome\scss\_variables.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+</Project>

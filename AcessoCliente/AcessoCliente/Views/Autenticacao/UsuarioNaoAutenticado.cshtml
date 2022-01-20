@@ -1,0 +1,84 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UsuarioNaoAutenticado</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>@ViewData["Retorno"]</h2>
+    <div class="modal fade" id="modal_cadastroUsuario" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                @*Cabeçalho*@
+                <div class="modal-header modal_header_title" style="color:#e3b04b;">
+                    <h5 class="modal-title " id="exampleModalLongTitle">Cadastro de Usuário</h5>
+                </div>
+
+                @*Corpo*@
+                <div class="modal-body">
+                    <form>
+                        @*Nome Completo*@
+                        <div class="form-group col-12">
+                            <label for="txt_modalUsuarioNomeCompleto">Nome Completo</label>
+                            <input type="text" class="form-control" id="txt_modalUsuarioNomeCompleto" placeholder="">
+                        </div>
+
+                        @*E-mail*@
+                        <div class="form-group col-12">
+                            <label for="txt_modalUsuarioEmail">E-mail</label>
+                            <input type="email" class="form-control" id="txt_modalUsuarioEmail" placeholder="">
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="txt_modalConfirmaUsuarioEmail">Confirma E-mail</label>
+                            <input type="email" class="form-control" id="txt_modalConfirmaUsuarioEmail" placeholder="">
+                        </div>
+
+                        <div class="row row_form_noMargin">
+                            @*Empresa*@
+                            <div class="form-group col-12 col-lg-6">
+                                <label for="select_modalUsuarioEmpresa">Empresa</label>
+                                <select id="select_modalUsuarioEmpresa" class="form-control">
+                                    <option value="0" selected="">Selecione...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row row_form_noMargin">
+                            <div class="form-group col-12">
+                                <label for="txt_modalUsuarioEmail">Usuario</label>
+                                <input type="email" class="form-control" id="txt_modalUsuario" placeholder="">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="txt_modalSenha">Senha</label>
+                                <input type="password" class="form-control" id="txt_modalSenha" placeholder="">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="txt_modalConfirmaSenha">Confirma Senha</label>
+                                <input type="password" class="form-control" id="txt_modalConfirmaSenha" placeholder="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                @*Rodapé*@
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" onclick="limparCampos(btn_modalUsuarioLimparCampos);" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
+                    <button type="button" class="btn btn-info" id="btn_modalUsuarioLimparCampos" onclick="limparCampos(this);"><i class="fa fa-trash"></i> Limpar</button>
+                    <button type="button" class="btn btn-success" onclick="RegistrarUsuario();" id="btn_modalUsuarioGravar"><i class="fa fa-floppy-o"></i> Gravar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/popper.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
