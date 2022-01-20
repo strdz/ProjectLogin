@@ -8156,7 +8156,8 @@ h1, h2, h3, h4, h5,
   line-height: 1.5;
   font-weight: 400;
   font-family: "Lato", Arial, sans-serif;
-  color: #000; }
+
+}
 
 .bg-primary {
   background: #e3b04b !important; }
@@ -8452,4 +8453,27 @@ h1, h2, h3, h4, h5,
     display: block;
     width: 100%;
     height: auto;
+}
+
+.aviso_usuario {
+    font-size: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    border: 0px solid #D3D3D3;
+    color: red;
+}
+
+.color_padrao {
+    color: #e3b04b !important;
+}
+
+.invalido {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+.invisivel {
+    display: none !important;
 }

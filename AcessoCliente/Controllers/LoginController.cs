@@ -1,22 +1,16 @@
 ﻿using AcessoCliente.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using System.Net;
-using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace AcessoCliente.Controllers
 {
@@ -30,41 +24,69 @@ namespace AcessoCliente.Controllers
         }
 
         [HttpPost]
+        [Route("/Login/Registra")]
+        public string Registra(UsuarioModel usuario)
+        {
+            string retorno = "";
+            try
+            {
+                usuario.Senha = HashSenha(usuario.Senha);
+
+                retorno = usuario.post_Registra(usuario);
+            }
+            catch (Exception ex)
+            {
+                retorno = ex.Message;
+            }
+            return retorno;
+        }
+
+        [HttpPost]
         public async Task<ActionResult<dynamic>> Login(UsuarioModel loginDetails)
         {
-            if (await ValidaCaptcha(loginDetails))
+            UsuarioModel objUsuario = new UsuarioModel();
+            if (ValidaCaptcha(loginDetails))
             {
-                loginDetails.Senha = HashSenha(loginDetails.Senha);
                 // Recupera o usuário no banco
                 var user = loginDetails.post_Login(loginDetails);
+                var usuario = Json(user);
 
-                // Verifica se o usuário existe
-                if (user == null)
+                string jsonString = usuario.Value.ToString().Replace("[", "").Replace("]","");
+
+                 objUsuario = JsonConvert.DeserializeObject<UsuarioModel>(jsonString);     
+
+                var valida = VerifyHashedPassword(objUsuario.Senha, loginDetails.Senha);
+      
+                if (user == "[]" || valida == false)
                 {
-                    return new
-                    {
-                        error = true
-                    };
+                    return Json(new { redirectToUrl = Url.Action("Index", "Home", new { mensagem = "Usuario ou senha incorreta!" }) });
                 }
                 else
                 {
-                    var usuario = Newtonsoft.Json.JsonConvert.DeserializeObject(user);
                     // Gera o Token
                     var token = GerarTokenJwt(loginDetails);
+
+                    setTokenCookie(token, loginDetails.Usuario);
 
                     // Oculta a senha
                     loginDetails.Senha = "";
 
                     if (token != "")
                     {
-                        return new
+                        try
                         {
-                            user = loginDetails.Usuario,
-                            token = token,
-                            expira = DateTime.Now.AddMinutes(120),
-                            error = false
-                        };
-                    }
+                            return Json(new { redirectToUrl = Url.Action("Dashboard", "Cliente"),
+                                user = loginDetails.Usuario,
+                                token = token,
+                                expira = DateTime.Now.AddMinutes(120),
+                                error = false });
+                        }
+                        catch (Exception ex)
+                        {
+                            return ex.Message;
+                        }
+
+                }
                     else
                     {
                         return RedirectToAction("UsuarioNaoAutenticado", "Autenticacao");
@@ -74,7 +96,7 @@ namespace AcessoCliente.Controllers
             {
                 try
                 {
-                    return Json(new { redirectToUrl = Url.Action("Index", "Home", new { mensagem = "Validação reCaptcha Failed!" })});
+                    return Json(new { redirectToUrl = Url.Action("Index", "Home", new { mensagem = "Validação reCaptcha falhou!" })});
                 } catch (Exception ex)
                 {
                     return ex.Message;
@@ -85,36 +107,68 @@ namespace AcessoCliente.Controllers
 
         public string HashSenha(string senha)
         {
-            byte[] salt = new byte[128 / 8];
-            using (var rngCsp = new RNGCryptoServiceProvider())
+            byte[] salt;
+            byte[] buffer2;
+            if (senha == null)
             {
-                rngCsp.GetNonZeroBytes(salt);
+                throw new ArgumentNullException("password");
             }
-            Convert.ToBase64String(salt);
-
-            // derive a 256-bit subkey (use HMACSHA256 with 100,000 iterations)
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: senha,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA256,
-                iterationCount: 100000,
-                numBytesRequested: 256 / 8));
-
-            return hashed;
+            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(senha, 0x10, 0x3e8))
+            {
+                salt = bytes.Salt;
+                buffer2 = bytes.GetBytes(0x20);
+            }
+            byte[] dst = new byte[0x31];
+            Buffer.BlockCopy(salt, 0, dst, 1, 0x10);
+            Buffer.BlockCopy(buffer2, 0, dst, 0x11, 0x20);
+            return Convert.ToBase64String(dst);
         }
-        //public IActionResult Login(UsuarioModel loginDetails)
-        //{
-        //    bool resultado = ValidarUsuario(loginDetails);
-        //    if (resultado)
-        //    {
-        //        var tokenString = GerarTokenJwt(loginDetails);
-        //        return Ok(new { token = tokenString });
-        //    }
-        //    else
-        //    {
-        //        return Unauthorized();
-        //    }
-        //}
+
+        public static bool VerifyHashedPassword(string hashedPassword, string password)
+        {
+            byte[] buffer4;
+            if (hashedPassword == null)
+            {
+                return false;
+            }
+            if (password == null)
+            {
+                throw new ArgumentNullException("password");
+            }
+            byte[] src = Convert.FromBase64String(hashedPassword);
+            if ((src.Length != 0x31) || (src[0] != 0))
+            {
+                return false;
+            }
+            byte[] dst = new byte[0x10];
+            Buffer.BlockCopy(src, 1, dst, 0, 0x10);
+            byte[] buffer3 = new byte[0x20];
+            Buffer.BlockCopy(src, 0x11, buffer3, 0, 0x20);
+
+            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(password, dst, 0x3e8))
+            {
+                buffer4 = bytes.GetBytes(0x20);
+            }
+            return ByteArraysEqual(buffer3, buffer4);
+        }
+
+        public static bool ByteArraysEqual(byte[] a, byte[] b)
+        {
+            if (object.ReferenceEquals(a, b))
+            {
+                return true;
+            }
+            if (a == null || b == null || a.Length != b.Length)
+            {
+                return false;
+            }
+            bool flag = true;
+            for (int i = 0; i < a.Length; i++)
+            {
+                flag &= (a[i] == b[i]);
+            }
+            return flag;
+        }
 
         public string GerarTokenJwt(UsuarioModel loginDetails)
         {
@@ -138,16 +192,7 @@ namespace AcessoCliente.Controllers
             }
         }
 
-        [HttpGet]
-        [Authorize(AuthenticationSchemes =
-        JwtBearerDefaults.AuthenticationScheme)]
-
-        public ActionResult Authenticated() {
-                // return View();
-                return RedirectToAction("Error", "Home");
-        }
-
-        public async Task<bool> ValidaCaptcha(UsuarioModel loginDetails)
+        public bool ValidaCaptcha(UsuarioModel loginDetails)
         {
                 string secretKey = "";
                 var cliente = new WebClient();
@@ -158,5 +203,15 @@ namespace AcessoCliente.Controllers
             return status;
         }
 
+        private void setTokenCookie(string token, string usuario)
+        {
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = DateTime.UtcNow.AddHours(2)
+            };
+            Response.Cookies.Append("Token", token, cookieOptions);
+            Response.Cookies.Append("usuario", usuario, cookieOptions);
+        }
     }
 }

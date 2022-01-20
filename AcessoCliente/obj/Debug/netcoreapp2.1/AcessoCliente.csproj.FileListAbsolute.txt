@@ -27,5 +27,8 @@ C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2
 C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2.1\AcessoCliente.dll
 C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2.1\AcessoCliente.pdb
 C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2.1\AcessoCliente.csproj.CopyComplete
-C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2.1\Razor\Views\Login\Authenticated.g.cshtml.cs
 C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2.1\Razor\Views\Autenticacao\UsuarioNaoAutenticado.g.cshtml.cs
+C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2.1\Razor\Views\Cliente\Dashboard.g.cshtml.cs
+C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2.1\Razor\Views\Ferramentas\ModalDinamico\ModalDinamico.g.cshtml.cs
+C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_MenuSuperior.g.cshtml.cs
+C:\Projetos\ReestruturacaoSIRS\AcessoCliente\AcessoCliente\obj\Debug\netcoreapp2.1\Razor\Views\Sistema\Chamado.g.cshtml.cs

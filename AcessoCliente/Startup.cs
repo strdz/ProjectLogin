@@ -6,8 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Http;
 using System.Text;
@@ -78,6 +76,7 @@ namespace AcessoCliente
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+  
             app.UseAuthentication();
 
 

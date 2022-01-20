@@ -1,0 +1,231 @@
+﻿
+/*Cor de fundo*/
+.bg-gray {
+    /*Cinza*/
+    background-color: #808080;
+    color: #fff
+}
+
+.bg-brown {
+    /*Marrom*/
+    background-color: #776251;
+    color: #fff
+}
+
+.bg-purple {
+    /*Roxo*/
+    background-color: #6666FF;
+    color: #fff
+}
+.bg-magenta {
+    /*Magenta*/
+    background-color: #CC00CC;
+    color: #fff
+}
+
+.bg-orange {
+    /*Laranja*/
+    background-color: #FF8000;
+    color: #fff
+}
+
+.bg-blue {
+    /*Azul-Claro*/
+    background-color: #C0DEFD;
+    color: #fff
+}
+
+.bg-dark-blue {
+    /*Azul-Escuro*/
+    background-color: #1565C0;
+    color: #fff;
+}
+
+.bg-navy-blue {
+    /*Azul-Marinho*/
+    background-color: #0b74b0;
+    color: #fff
+}
+
+/*Hover de Botões e Tag 'a' com as cores de fundo*/
+
+button.bg-brown:hover, a.bg-brown:hover {
+    background-color: #503520;
+    color: #fff
+}
+
+button.bg-gray:hover, a.bg-gray:hover {
+    background-color: #606060;
+    color: #fff
+}
+
+button.bg-purple:hover, a.bg-purple:hover {
+    background-color: #4343A8;
+    color: #fff
+}
+
+button.bg-magenta:hover, a.bg-magenta:hover {
+    background-color: #8A008A;
+    color: #fff
+}
+
+button.bg-orange:hover, a.bg-orange:hover {
+    background-color: #E27303;
+    color: #fff
+}
+
+button.bg-navy-blue:hover, a.bg-navy-blue:hover {
+    background-color: #0a5f8f;
+    color: #fff
+}
+
+/*Cores das Linhas de Tabelas*/
+
+div.item_selected, .item_selected, div.selected_row, selected_row, div.item_selected ul li {
+    background-color: #FFE140 !important;
+}
+
+.red_row, .red_row ul li {
+    /*Vermelho (Claro)*/
+    background-color: #ffcdd2 !important;
+}
+
+.gray_row, .gray_row ul li {
+    /*Cinza (Claro)*/
+    background-color: #bdbdbd !important;
+}
+
+.yellow_row, .yellow_row ul li {
+    /*Amarelo (Claro) */
+    background-color: #fff9c4 !important;
+}
+
+.white_row, .white_row ul li {
+    /*Branco */
+    background-color: #fff !important;
+}
+
+.green_row, .green_row ul li {
+    /*Verde (Claro)*/
+    background-color: #c8e6c9 !important;
+}
+
+.purple_row, .purple_row ul li {
+    /*Roxo (Claro)*/
+    background-color: #d1c4e9 !important;
+}
+
+.blue_row, .blue_row ul li {
+    /*Azul (Claro)*/
+    background-color: #C0DEFD !important;
+}
+
+.gold_row, .gold_row ul li {
+    /*Dourado*/
+    background-color: #FFE140 !important;
+}
+
+.pink_row, .pink_row ul li {
+    /*Rosa (Claro)*/
+    background-color: #f8d7f6 !important;
+}
+
+.orange_row, .orange_row ul li {
+    /*Laranja (Escuro)*/
+    background-color: #FFC080 !important;
+}
+
+
+
+.dark_blue_row, .dark_blue_row ul li {
+    /*Azul (Escuro)*/
+    background-color: #1E90FF !important;
+}
+
+.dark_green_row, .dark_green_row ul li {
+    /*Verde (Escuro)*/
+    background-color: #28a745 !important;
+}
+
+.dark_red_row, .dark_red_row ul li {
+    /*Vermelho (Escuro)*/
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+.dark_purple_row, .dark_purple_row ul li {
+    /*Roxo (Escuro)*/
+    background-color: #6d1bc4 !important;
+}
+
+.dark_orange_row, .dark_orange_row ul li {
+    /*Laranja (Escuro)*/
+    background-color: #FF9933 !important;
+}
+
+.dark_pink_row, .dark_pink_row ul li {
+    /* Rosa Escuro*/
+    background-color: #880e4f !important;
+}
+
+.green_shadow {
+    box-shadow: 0px 0px 0px 4px #28a745;
+    -webkit-box-shadow: 0px 0px 0px 4px #28a745;
+    -moz-box-shadow: 0px 0px 0px 4px #28a745;
+}
+
+.blue_shadow {
+    /*Azul (Escuro)*/
+    box-shadow: 0px 0px 0px 4px #1E90FF;
+    -webkit-box-shadow: 0px 0px 0px 4px #1E90FF;
+    -moz-box-shadow: 0px 0px 0px 4px #1E90FF;
+}
+
+.purple_shadow {
+    /*Roxo (Escuro)*/
+    box-shadow: 0px 0px 0px 4px #6d1bc4;
+    -webkit-box-shadow: 0px 0px 0px 4px #6d1bc4;
+    -moz-box-shadow: 0px 0px 0px 4px #6d1bc4;
+}
+
+.red_shadow {
+    /*Vermelho (Escuro)*/
+    box-shadow: 0px 0px 0px 4px #dc3545;
+    -webkit-box-shadow: 0px 0px 0px 4px #dc3545;
+    -moz-box-shadow: 0px 0px 0px 4px #dc3545;
+}
+
+.orange_shadow {
+    /*Laranja (Escuro)*/
+    box-shadow: 0px 0px 0px 4px #FF9933;
+    -webkit-box-shadow: 0px 0px 0px 4px #FF9933;
+    -moz-box-shadow: 0px 0px 0px 4px #FF9933;
+}
+
+.gold_shadow {
+    /*Amarelo (Escuro)*/
+    box-shadow: 0px 0px 0px 4px gold;
+    -webkit-box-shadow: 0px 0px 0px 4px gold;
+    -moz-box-shadow: 0px 0px 0px 4px gold;
+}
+
+.gray_shadow {
+    /*Amarelo (Escuro)*/
+    box-shadow: 0px 0px 0px 4px #a9a9a9;
+    -webkit-box-shadow: 0px 0px 0px 4px #a9a9a9;
+    -moz-box-shadow: 0px 0px 0px 4px #a9a9a9;
+}
+
+/*Icones*/
+.icon_blue {
+    color: #1E90FF;
+}
+
+.icon_gray {
+    color: gray;
+    cursor: default;
+}
+
+.icon_red {
+    color: red;
+}

@@ -12571,11 +12571,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\ReestruturacaoSIRS\\AcessoCliente\\AcessoCliente\\AcessoCliente.csproj",
+      "projectUniqueName": "C:\\Users\\marlonv\\Source\\Repos\\strdz\\ProjectLogin\\AcessoCliente\\AcessoCliente\\AcessoCliente.csproj",
       "projectName": "AcessoCliente",
-      "projectPath": "C:\\Projetos\\ReestruturacaoSIRS\\AcessoCliente\\AcessoCliente\\AcessoCliente.csproj",
+      "projectPath": "C:\\Users\\marlonv\\Source\\Repos\\strdz\\ProjectLogin\\AcessoCliente\\AcessoCliente\\AcessoCliente.csproj",
       "packagesPath": "C:\\Users\\marlonv\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\ReestruturacaoSIRS\\AcessoCliente\\AcessoCliente\\obj\\",
+      "outputPath": "C:\\Users\\marlonv\\Source\\Repos\\strdz\\ProjectLogin\\AcessoCliente\\AcessoCliente\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

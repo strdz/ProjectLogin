@@ -1,0 +1,21 @@
+﻿/*layout base (Cabeçalho, filtros, Card de conteudo com rodapé)*/
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-b-lg {
+    max-width: 80%;
+    width: 80%;
+}
+
+.modal_header_title {
+    display: flex;
+    justify-content: center;
+    color: #fff
+}
+
+
+
+
+
